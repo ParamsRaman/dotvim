@@ -27,6 +27,7 @@ set showmatch
 "set noswapfile
 set textwidth=80
 set colorcolumn=80
+set ma "make buffer modifiable (useful when git etc opens up another window/buffer on the side"
 
 "setup ctags such that it works in all sub-directories also
 set tags=tags;/
@@ -119,14 +120,21 @@ nmap <F10> :set nowrap<CR>
 "write using w!! if require sudo access
 cmap w!! w !sudo tee % >/dev/null
 
-"Comment and uncomment lines
-" (Use NerdCommenter plugin and its pre-defined mappings)
-" ,cc (single line comment)
-" ,cm (multi line comment)
-" ,cu (uncomment)
-" ,cs (sexy/docstyle comment)
-" ,ci (toggle line comment style)
-" ,c$ (comment from cursor til end of line)
+" fugitive git bindings
+nnoremap <silent> <leader>ga :Git add %:p<CR><CR>
+nnoremap <silent> <leader>gs :Gstatus<CR>
+nnoremap <silent> <leader>gc :Gcommit -v -q<CR>
+nnoremap <silent> <leader>gt :Gcommit -v -q %:p<CR>
+nnoremap <silent> <leader>gd :Gdiff<CR>
+nnoremap <silent> <leader>ge :Gedit<CR>nnoremap <silent> <leader>gr :Gread<CR>
+nnoremap <silent> <leader>gw :Gwrite<CR><CR>
+nnoremap <silent> <leader>gl :silent! Glog<CR>:bot copen<CR>
+nnoremap <silent> <leader>gp :Ggrep<Space>
+nnoremap <silent> <leader>gm :Gmove<Space>
+nnoremap <silent> <leader>gb :Git branch<Space>
+nnoremap <silent> <leader>go :Git checkout<Space>
+nnoremap <silent> <leader>gps :Dispatch! git push<CR>
+nnoremap <silent> <leader>gpl :Dispatch! git pull<CR>
 
 "Stop using arrow keys for navigation
 map <up> <nop>
@@ -137,3 +145,12 @@ map <right> <nop>
 "Other notes:
 "- Use :gqG to wrap text for entire file
 "- Use :gqq to wrap current line
+
+"Comment and uncomment lines
+" (Use NerdCommenter plugin and its pre-defined mappings)
+" ,cc (single line comment)
+" ,cm (multi line comment)
+" ,cu (uncomment)
+" ,cs (sexy/docstyle comment)
+" ,ci (toggle line comment style)
+" ,c$ (comment from cursor til end of line)
