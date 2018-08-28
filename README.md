@@ -1,6 +1,7 @@
 ## How to setup Neovim and plugins
 
 `$ brew install nvim` 
+
 `$ sudo pip install --upgrade neovim`
 
 `$ brew install ctags-exuberant`
